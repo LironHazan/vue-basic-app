@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="search"  v-on:clicked="alert('clicked')"/>
+    <div> search results {{result[0]}}</div>
   </div>
 </template>
 
@@ -10,9 +10,19 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "app",
+  data: function() {
+      return {
+          result: ['item1']
+      }
+  },
   components: {
     HelloWorld
-  }
+  },
+    methods: {
+        alert() {
+            alert('on')
+        }
+    }
 };
 </script>
 
