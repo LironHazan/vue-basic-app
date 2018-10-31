@@ -1,26 +1,32 @@
 <template>
   <div id="app">
-    <HelloWorld msg="search"  v-on:clicked="alert('clicked')"/>
-    <div> search results {{result[0]}}</div>
+    <Search msg="search"  v-on:search="onSearch"/>
+    <div v-for="item of vmList"> {{item}}</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Search from "./components/search/Search.vue";
 
 export default {
   name: "app",
   data: function() {
       return {
-          result: ['item1']
+          list: ['one', 'too', 'me'],
+          vmList: []
       }
   },
   components: {
-    HelloWorld
+      Search
   },
+    mounted() {
+        this.vmList = this.list;
+    },
     methods: {
-        alert() {
-            alert('on')
+        onSearch(value) {
+            console.log(value);
+            this.vmList = this.list;
+            this.vmList = this.list.filter(item => item.includes(value));
         }
     }
 };

@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
-    <input v-model="text" @keyup.enter="enterClicked()"/>
+    <input v-model="text" @keyup.enter="notifySearch()"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "SearchComponent",
   data: function() {
       return {
           text: ''
@@ -16,8 +16,9 @@ export default {
     msg: String
   },
     methods: {
-        enterClicked() {
-            this.$emit('clicked', this.text);
+        notifySearch() {
+            console.log(this.text);
+            this.$emit('search', this.text);
         }
     }
 };
