@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Search msg="search"  v-on:search="onSearch"/>
+    <Search :msg="searchTextTitle"  v-on:search="onSearch"/>
     <div v-for="item of vmList"> {{item}}</div>
   </div>
 </template>
@@ -12,7 +12,7 @@ export default {
   name: "app",
   data: function() {
       return {
-          list: ['one', 'too', 'me'],
+          list: ['one', 'too', 'me', 'two', 'to', 'you'],
           vmList: []
       }
   },
@@ -27,6 +27,11 @@ export default {
             console.log(value);
             this.vmList = this.list;
             this.vmList = this.list.filter(item => item.includes(value));
+        }
+    },
+    computed: {
+        searchTextTitle() {
+            return 'I am computed';
         }
     }
 };

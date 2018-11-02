@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    {{msg}}
     <input v-model="text" @keyup.enter="notifySearch()"/>
   </div>
 </template>
@@ -7,6 +8,8 @@
 <script>
 export default {
   name: "SearchComponent",
+  // In components the data returns from a factory function so that you could use
+  // the component on several elements and have a different state for each
   data: function() {
       return {
           text: ''
@@ -17,7 +20,7 @@ export default {
   },
     methods: {
         notifySearch() {
-            console.log(this.text);
+            // This is how you notify the parent that
             this.$emit('search', this.text);
         }
     }
